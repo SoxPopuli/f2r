@@ -13,7 +13,7 @@ glbinding = dependency('glbinding', required: true)
 fmt = dependency('fmt', required: true)
 spdlog = dependency('spdlog', required: true)
 
-sdl2 = dependency('sdl2', required: true)
+sdl2 = dependency('sdl2')
 if sdl2.found() == false
   sdl2_proj = cmake.subproject('SDL')
   sdl2 = [ sdl2_proj.dependency('SDL2'), sdl2_proj.dependency('SDL2main') ]
