@@ -1,3 +1,6 @@
 [submodule "subprojects/portaudio"]
 	path = subprojects/portaudio
 	url = https://github.com/PortAudio/portaudio
+[submodule "subprojects/SDL"]
+	path = subprojects/SDL
+	url = https://github.com/libsdl-org/SDL
