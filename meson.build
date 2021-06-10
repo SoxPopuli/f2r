@@ -2,15 +2,30 @@ project('f2r', 'cpp',
   version : '0.1',
   default_options : [
     'warning_level=3',
-    'cpp_std=c++20'
+    'cpp_std=c++20',
+    'pkg_config_path=@0@'.format( meson.current_build_dir() )
   ])
 
+cmake = import('cmake')
+cmake_opt = cmake.subproject_options()
+
 glbinding = dependency('glbinding', required: true)
-sdl2 = dependency('sdl2', required: true)
 fmt = dependency('fmt', required: true)
 spdlog = dependency('spdlog', required: true)
-portaudio = dependency('portaudiocpp', required: true)
 
+sdl2 = dependency('sdl2', required: true)
+if sdl2.found() == false
+  sdl2_proj = cmake.subproject('SDL')
+  sdl2 = [ sdl2_proj.dependency('SDL2'), sdl2_proj.dependency('SDL2main') ]
+endif
+
+portaudio = dependency('portaudio')
+if portaudio.found() == false
+  portaudio_proj = cmake.subproject('portaudio')
+  portaudio = portaudio_proj.dependency('portaudio')
+endif
+
+mp3lame = dependency('libmp3lame', required: false, disabler: true)
 
 ffmpeg_deps = [
   dependency('libavcodec',    method:  'pkg-config',  required:  true),
