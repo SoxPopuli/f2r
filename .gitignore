@@ -1,0 +1,5 @@
+build/
+.cache/
+.obsidian/
+data/
+compile_commands.json
