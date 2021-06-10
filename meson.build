@@ -27,14 +27,6 @@ endif
 
 mp3lame = dependency('libmp3lame', required: false, disabler: true)
 
-ffmpeg_deps = [
-  dependency('libavcodec',    method:  'pkg-config',  required:  true),
-  dependency('libavdevice',   method:  'pkg-config',  required:  true),
-  dependency('libavfilter',   method:  'pkg-config',  required:  true),
-  dependency('libavformat',   method:  'pkg-config',  required:  true),
-  dependency('libavutil',     method:  'pkg-config',  required:  true),
-]
-
 config_data = configuration_data()
 host_endian = host_machine.endian()
 if host_endian == 'little' or host_endian == 'big'

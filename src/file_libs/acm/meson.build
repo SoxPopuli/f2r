@@ -7,12 +7,12 @@ acm_srcs = files(
 acm_lib = library('acm',
   acm_srcs,
   include_directories: [ acm_inc, config_inc ],
-  dependencies: [ common, ffmpeg_deps, portaudio ],
+  dependencies: [ common, portaudio ],
   install: true
 )
 
 acm = declare_dependency(
   link_with: [acm_lib],
   include_directories: [ file_libs_inc, config_inc ],
-  dependencies: [ common, ffmpeg_deps, portaudio ]
+  dependencies: [ common, portaudio ]
 )
