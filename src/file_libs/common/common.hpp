@@ -9,6 +9,7 @@
 #include <cstring>
 #include <string_view>
 #include <vector>
+#include <istream>
 
 namespace file
 {
@@ -48,4 +49,5 @@ namespace file
     };
 
     std::vector<std::uint8_t> get_file_bytes(const std::string& path);
+    std::vector<std::uint8_t> get_file_bytes(std::istream& stream);
 }

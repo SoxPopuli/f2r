@@ -13,13 +13,13 @@ glbinding = dependency('glbinding', required: true)
 fmt = dependency('fmt', required: true)
 spdlog = dependency('spdlog', required: true)
 
-sdl2 = dependency('sdl2')
+sdl2 = dependency('sdl2', required: false)
 if sdl2.found() == false
   sdl2_proj = cmake.subproject('SDL')
   sdl2 = [ sdl2_proj.dependency('SDL2'), sdl2_proj.dependency('SDL2main') ]
 endif
 
-portaudio = dependency('portaudio')
+portaudio = dependency('portaudio', required: false)
 if portaudio.found() == false
   portaudio_proj = cmake.subproject('portaudio')
   portaudio = portaudio_proj.dependency('portaudio')

@@ -1,3 +1,6 @@
+#include "acm/acm.hpp"
+#include "acm/wav.hpp"
+
 #include <cstdlib>
 #include <cxxopts.hpp>
 #include <fmt/core.h>
@@ -42,6 +45,7 @@ auto parse_args(int argc, char* argv[])
     options.add_options()
         ("i,input", "input file", string_arg())
         ("o,output", "output file, uses stdout by default", string_arg())
+        ("t,test", "print file info")
         ("h,help", "show help")
         ;
 
@@ -66,6 +70,17 @@ int main(int argc, char* argv[])
 {
     try {
         auto result = parse_args(argc, argv);
+
+        if( result.count("test") > 0 )
+        {
+            auto input = result["input"].as<std::string>();
+            auto stream = std::ifstream(input, std::ios::in | std::ios::binary);
+            auto data = file::decode_acm(stream);
+
+            fmt::print("{}:\n", input);
+
+
+        }
 
     } catch( HelpException& ex ) {
         fmt::print("{}\n", ex.what());

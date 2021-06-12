@@ -1,8 +1,10 @@
 #pragma once
 #include <config.hpp>
+#include "wav.hpp"
 #include "common/common.hpp"
 
 #include <array>
+#include <istream>
 
 namespace file
 {
@@ -18,8 +20,13 @@ namespace file
         u16 attrs2;
 
 
+        ACM() = default;
+        ~ACM() = default;
+
+        explicit ACM( std::istream& stream );
 
         static ACM open(const std::string& path);
     };
 
+    WAV decode_acm( std::istream& stream );
 }
