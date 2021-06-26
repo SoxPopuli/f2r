@@ -13,13 +13,13 @@ glbinding = dependency('glbinding', required: true)
 fmt = dependency('fmt', required: true)
 spdlog = dependency('spdlog', required: true)
 
-sdl2 = dependency('sdl2')
+sdl2 = dependency('sdl2', required: false)
 if sdl2.found() == false
   sdl2_proj = cmake.subproject('SDL')
   sdl2 = [ sdl2_proj.dependency('SDL2'), sdl2_proj.dependency('SDL2main') ]
 endif
 
-portaudio = dependency('portaudio')
+portaudio = dependency('portaudio', required: false)
 if portaudio.found() == false
   portaudio_proj = cmake.subproject('portaudio')
   portaudio = portaudio_proj.dependency('portaudio')
@@ -35,7 +35,10 @@ else
   error('System endian unknown')
 endif
 
-config_inc = include_directories('.')
+config_inc = [ 
+  include_directories('.'), 
+  include_directories('src/include') 
+]
 configure_file(
   configuration: config_data, 
   input: 'config.hpp.in',
@@ -43,18 +46,34 @@ configure_file(
 # build file libraries
 subdir('src/file_libs')
 
+libacm_cpp = dependency('', fallback: ['libacm', 'libacm_cpp'])
+
 if get_option('build_tools')
   cxxopts = dependency('cxxopts', required: true)
   subdir('tools')
 endif
 
-inc = include_directories('src')
+if get_option('build_tests')
+  subdir('tests')
+endif
+
+inc = include_directories('src/include')
 srcs = files(
   'src/main.cpp',
   'src/window.cpp'
 )
+
+exe_deps = [
+  fmt, 
+  spdlog,
+  glbinding,
+  sdl2,
+  file_deps,
+  libacm_cpp,
+]
+
 executable('f2r',
            srcs,
            include_directories: [ config_inc, inc ],
-           dependencies: [ fmt, spdlog, glbinding, sdl2, file_deps ],
+           dependencies: exe_deps,
            install : true)

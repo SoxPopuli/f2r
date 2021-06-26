@@ -1,8 +1,9 @@
 #include "pal/pal.hpp"
 #include <cxxopts.hpp>
 #include <fmt/core.h>
+#include <fstream>
 
-file::PAL palette;
+file::pal::Pal palette;
 
 void print_text()
 {
@@ -69,7 +70,8 @@ int main(int argc, char* argv[])
         return EXIT_SUCCESS;
     }
 
-    palette = file::PAL::open(result["file"].as<std::string>());
+    auto pal_stream = std::ifstream(result["file"].as<std::string>());
+    palette = file::pal::Pal(pal_stream);
 
     if( result.count("w") == 0 )
         print_text();

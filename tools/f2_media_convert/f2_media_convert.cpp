@@ -1,3 +1,8 @@
+#include "acm/acm.hpp"
+#include "acm/wav.hpp"
+
+#include <libacm.hpp>
+
 #include <cstdlib>
 #include <cxxopts.hpp>
 #include <fmt/core.h>
@@ -7,6 +12,7 @@
 #include <cstdio>
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 
 class ArgumentException: public std::exception 
@@ -42,6 +48,8 @@ auto parse_args(int argc, char* argv[])
     options.add_options()
         ("i,input", "input file", string_arg())
         ("o,output", "output file, uses stdout by default", string_arg())
+        ("c,channels", "override channels", cxxopts::value<int>())
+        ("t,test", "print file info")
         ("h,help", "show help")
         ;
 
@@ -62,10 +70,51 @@ auto parse_args(int argc, char* argv[])
     return result;
 }
 
+static void write_wav_header(acm::Acm& acm, std::ostream& out)
+{
+    constexpr auto code = 1;
+    auto chars = [](const auto& data) { return reinterpret_cast<const char*>(&data); };
+    auto write32 = [&](const auto& data) { out.write(chars(data), 4); };
+    auto write16 = [&](const auto& data) { out.write(chars(data), 2); };
+
+    auto channels = acm.channels();
+    auto data_len = acm.size();
+    auto rate = acm.rate();
+    auto avg_bps = acm.bits_per_second();
+    auto bits = acm.word_size() * 8;
+    auto block_align = bits * channels / 8;
+    auto header_len = 16;
+    auto wav_len = 4 + 8 + header_len + 8 + data_len;
+
+    out.write("RIFF", 4);
+    write32(wav_len);
+    out.write("WAVEfmt ", 8);
+    write32(header_len);
+    write16(code);
+    write16(channels);
+    write32(rate);
+    write32(avg_bps);
+    write16(block_align);
+    write16(bits);
+
+    out.write("data", 4);
+    write32(data_len);
+}
+
 int main(int argc, char* argv[])
 {
     try {
         auto result = parse_args(argc, argv);
+
+        auto input = result["input"].as<std::string>();
+        auto stream = std::ifstream(input, std::ios::in | std::ios::binary);
+
+        int channels = -1;
+        if( result.count("channels") > 0 )
+            channels = result["channels"].as<int>();
+
+        auto acm = acm::Acm(stream, channels);
+        acm.write_wav(std::cout);
 
     } catch( HelpException& ex ) {
         fmt::print("{}\n", ex.what());

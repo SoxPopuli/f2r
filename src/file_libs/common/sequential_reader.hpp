@@ -7,17 +7,17 @@
 namespace file
 {
 
-    template<class Indexable, cfg::endian Endian>
+    //template<class Indexable, cfg::endian Endian>
+    template<cfg::endian Endian, class Indexable>
     class SequentialReader
     {
         std::size_t offset = 0;
     public:
         const Indexable& indexable;
-        const FileBase<Endian>& file;
+        //const FileBase<Endian>& file;
 
-        SequentialReader(const Indexable& indexable, const FileBase<Endian>& endian): 
-            indexable(indexable), file(endian)
-        {}
+        SequentialReader(const Indexable& indexable) :
+            indexable(indexable) {}
 
         ~SequentialReader() = default;
 
@@ -28,7 +28,7 @@ namespace file
             std::memcpy(&value, &(indexable[offset]), sizeof(T));
 
             offset += sizeof(T);
-            return file.fix_endian(value);
+            return fix_endian<Endian>(value);
         }
 
         template<class T>
@@ -36,7 +36,7 @@ namespace file
         {
             std::memcpy(&value, &(indexable[offset]), sizeof(T));
 
-            value = file.fix_endian(value);
+            value = fix_endian<Endian>(value);
             offset += sizeof(T);
         }
 
@@ -44,4 +44,9 @@ namespace file
         void set_offset(std::size_t new_offset) { offset = new_offset; }
     };
 
+    template<cfg::endian Endian, class Indexable>
+    auto make_sequential_reader(const Indexable& indexable)
+    {
+        return SequentialReader<Endian, Indexable>(indexable);
+    }
 }

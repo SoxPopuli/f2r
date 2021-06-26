@@ -4,8 +4,8 @@ subdir('common')
 subdir('pal')
 subdir('frm')
 subdir('acm')
-#subdir('mve')
+subdir('mve')
 
 file_deps = declare_dependency(
-  dependencies: [ common, pal, frm, acm ]
+  dependencies: [ common, pal, frm, acm, mve ]
 )

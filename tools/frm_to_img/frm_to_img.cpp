@@ -7,10 +7,11 @@
 #include <array>
 #include <cstdio>
 #include <iostream>
+#include <fstream>
 
-#include <OpenImageIO/imageio.h>
+//#include <OpenImageIO/imageio.h>
 
-#include "stb_write_image.h"
+#include "stb/stb_image_write.h"
 
 typedef std::uint8_t u8;
 typedef std::uint16_t u16;
@@ -47,7 +48,7 @@ struct RGBA {
     //output->close();
 //}
 
-void write_image_stb(const file::FRM& f)
+void write_image_stb(const file::frm::Frm& f)
 {
     std::vector<RGBA> pixels;
     auto f0 = f.frames[0];
@@ -81,8 +82,11 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    auto pal = file::PAL::open( argv[1] );
-    auto frm = file::FRM::open( argv[2] );
+    auto pal_stream = std::ifstream(argv[1]);
+    auto frm_stream = std::ifstream(argv[2]);
+
+    auto pal = file::pal::Pal( pal_stream );
+    auto frm = file::frm::Frm( frm_stream );
     frm.palette = pal;
 
     //write_image(frm);
