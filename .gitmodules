@@ -4,3 +4,9 @@
 [submodule "subprojects/SDL"]
 	path = subprojects/SDL
 	url = https://github.com/libsdl-org/SDL
+[submodule "subprojects/libacm"]
+	path = subprojects/libacm
+	url = git@github.com:SoxPopuli/libacm.git
+[submodule "tools/frm_to_img/stb"]
+	path = tools/frm_to_img/stb
+	url = https://github.com/nothings/stb

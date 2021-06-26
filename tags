@@ -1,0 +1,172 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/charlie/Code/f2r/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
+ACM	src/file_libs/acm/acm.cpp	/^    ACM::ACM( std::istream& stream )$/;"	f	class:file::ACM
+ACM	src/file_libs/acm/acm.hpp	/^    struct ACM: public FileBase<cfg::endian::little>$/;"	s	namespace:file
+ACM_EMPTY	src/file_libs/acm/acm.cpp	/^        struct ACM_EMPTY: public FileBase<cfg::endian::little> {};$/;"	s	function:file::decode_acm	file:
+CharArray	src/file_libs/common/str_array.hpp	/^            constexpr CharArray( const char(&cstr)[N] )$/;"	f	struct:file::str_array::CharArray
+CharArray	src/file_libs/common/str_array.hpp	/^        struct CharArray $/;"	s	namespace:file::str_array
+FRM	src/file_libs/frm/frm.hpp	/^    struct FRM: public FileBase<cfg::endian::big>$/;"	s	namespace:file
+FileBase	src/file_libs/common/common.hpp	/^    struct FileBase$/;"	s	namespace:file
+Frame	src/file_libs/frm/frame.hpp	/^    struct Frame$/;"	s	namespace:file
+GLAttributes	src/window.cpp	/^    struct GLAttributes { SDL_GLattr a; int v; };$/;"	s	function:set_gl_attributes	file:
+Header	src/file_libs/acm/wav.hpp	/^        struct Header$/;"	s	struct:file::WAV
+MarkerType	src/file_libs/acm/wav.hpp	/^            typedef const std::array<char, 4> MarkerType;$/;"	t	struct:file::WAV::Header	typeref:typename:const std::array<char,4>
+Offset	src/file_libs/acm/acm.cpp	/^struct Offset $/;"	s	file:
+PAL	src/file_libs/pal/pal.hpp	/^    struct PAL: public FileBase<cfg::SYSTEM_ENDIAN>$/;"	s	namespace:file
+Point	src/file_libs/common/point.hpp	/^    struct Point { T x, y; };$/;"	s	namespace:file
+Renderer	src/renderer.cpp	/^Renderer::Renderer()$/;"	f	class:Renderer
+Renderer	src/renderer.hpp	/^class Renderer$/;"	c
+Rgb	src/file_libs/common/color.hpp	/^    struct Rgb { T r, g, b; };$/;"	s	namespace:file
+Rgba	src/file_libs/common/color.hpp	/^    struct Rgba { T r, g, b, a; };$/;"	s	namespace:file
+SDLDeleter	src/window.hpp	/^    struct SDLDeleter {$/;"	s	namespace:detail
+SDLPtr	src/window.hpp	/^    using SDLPtr = std::unique_ptr<T, detail::SDLDeleter>;$/;"	t	class:Window	typeref:typename:std::unique_ptr<T,detail::SDLDeleter>
+SDL_GLContext	src/window.hpp	/^typedef void* SDL_GLContext;$/;"	t	typeref:typename:void *
+SequentialReader	src/file_libs/common/sequential_reader.hpp	/^        SequentialReader(const Indexable& indexable, const FileBase<Endian>& endian): $/;"	f	class:file::SequentialReader
+SequentialReader	src/file_libs/common/sequential_reader.hpp	/^    class SequentialReader$/;"	c	namespace:file
+Test	src/file_libs/common/tests/endian_test.cpp	/^struct Test : public file::FileBase<opposite_endian>$/;"	s	file:
+Vector2D	src/file_libs/acm/acm.cpp	/^    Vector2D(size_t width, size_t height):$/;"	f	struct:Vector2D	file:
+Vector2D	src/file_libs/acm/acm.cpp	/^struct Vector2D: public std::vector<T>$/;"	s	file:
+WAV	src/file_libs/acm/wav.cpp	/^    WAV::WAV(const ACM& acm)$/;"	f	class:file::WAV
+WAV	src/file_libs/acm/wav.hpp	/^    struct WAV$/;"	s	namespace:file
+Window	src/window.cpp	/^Window::Window()$/;"	f	class:Window
+Window	src/window.hpp	/^class Window$/;"	c
+__anon30e895ee0102	src/file_libs/pal/pal.cpp	/^        {$/;"	f	function:file::PAL::open	file:
+__anon30e895ee0202	src/file_libs/pal/pal.cpp	/^        {$/;"	f	function:file::PAL::open	file:
+__anon5f1e64d60102	src/file_libs/acm/acm.cpp	/^        const auto fix = [&](const auto& val) { return fix_endian<ACM_ENDIAN>(val); };$/;"	f	function:file::decode_acm	file:
+__anon5f1e64d60202	src/file_libs/acm/acm.cpp	/^        auto read_bits = [&](auto bits) { return offset.read_data( bytes.data(), bits ); };$/;"	f	function:file::decode_acm	file:
+__anonb6226f050102	src/window.cpp	/^    glbinding::initialize([](const char* c) { $/;"	f	function:Window::Window	file:
+__anonb6226f050202	src/window.cpp	/^    auto print_gl_string = [](auto str, auto name) {$/;"	f	function:Window::Window	file:
+a	src/file_libs/common/color.hpp	/^    struct Rgba { T r, g, b, a; };$/;"	m	struct:file::Rgba	typeref:typename:T
+a	src/window.cpp	/^    struct GLAttributes { SDL_GLattr a; int v; };$/;"	m	struct:set_gl_attributes::GLAttributes	typeref:typename:SDL_GLattr	file:
+action_frame	src/file_libs/frm/frm.hpp	/^        u16 action_frame;$/;"	m	struct:file::FRM	typeref:typename:u16
+arr	src/file_libs/common/str_array.hpp	/^            std::array<char, ch.size()> arr;$/;"	v	namespace:file::str_array	typeref:typename:std::array<char,ch.size ()>
+as_bytes	src/file_libs/acm/acm.cpp	/^    size_t as_bytes() const { return bits \/ 8; }$/;"	f	struct:Offset	typeref:typename:size_t	file:
+assert	src/file_libs/common/tests/endian_test.cpp	/^#define assert(/;"	d	file:
+attrs1	src/file_libs/acm/acm.hpp	/^        u8 attrs1;$/;"	m	struct:file::ACM	typeref:typename:u8
+attrs2	src/file_libs/acm/acm.hpp	/^        u16 attrs2;$/;"	m	struct:file::ACM	typeref:typename:u16
+audio_format	src/file_libs/acm/wav.hpp	/^            u16         audio_format;                                                           /;"	m	struct:file::WAV::Header	typeref:typename:u16
+b	src/file_libs/common/color.hpp	/^    struct Rgb { T r, g, b; };$/;"	m	struct:file::Rgb	typeref:typename:T
+b	src/file_libs/common/color.hpp	/^    struct Rgba { T r, g, b, a; };$/;"	m	struct:file::Rgba	typeref:typename:T
+bits	src/file_libs/acm/acm.cpp	/^    size_t bits;$/;"	m	struct:Offset	typeref:typename:size_t	file:
+bits_per_sample	src/file_libs/acm/wav.hpp	/^            u16         bits_per_sample;                                                        /;"	m	struct:file::WAV::Header	typeref:typename:u16
+block_align	src/file_libs/acm/wav.hpp	/^            u16         block_align; \/\/= (bits_per_sample * channel_count) \/ frame_bits [16\//;"	m	struct:file::WAV::Header	typeref:typename:u16
+byte_rate	src/file_libs/acm/wav.hpp	/^            u32         byte_rate;   \/\/= (sample_rate * bits_per_sample * channel_count) \/ 8$/;"	m	struct:file::WAV::Header	typeref:typename:u32
+ch	src/file_libs/common/str_array.hpp	/^            char ch[N-1];$/;"	m	struct:file::str_array::CharArray	typeref:typename:char[]
+channel_count	src/file_libs/acm/wav.hpp	/^            u16         channel_count;                                                          /;"	m	struct:file::WAV::Header	typeref:typename:u16
+channel_num	src/file_libs/acm/acm.hpp	/^        u16 channel_num;$/;"	m	struct:file::ACM	typeref:typename:u16
+chunk_id	src/file_libs/acm/wav.hpp	/^            MarkerType  chunk_id = "RIFF"_str_array;                                            /;"	m	struct:file::WAV::Header	typeref:typename:MarkerType
+chunk_size	src/file_libs/acm/wav.hpp	/^            u32         chunk_size; \/\/= 4 + (8 + format_chunk_size) + (8 + data_chunk_size)$/;"	m	struct:file::WAV::Header	typeref:typename:u32
+color_indices	src/file_libs/frm/frame.hpp	/^        std::vector<u8> color_indices;$/;"	m	struct:file::Frame	typeref:typename:std::vector<u8>
+colors	src/file_libs/pal/pal.hpp	/^        std::array<u8Rgb, 256> colors;$/;"	m	struct:file::PAL	typeref:typename:std::array<u8Rgb,256>
+context	src/window.hpp	/^    SDL_GLContext context;$/;"	m	class:Window	typeref:typename:SDL_GLContext
+data	src/file_libs/acm/wav.hpp	/^        std::vector<u8> data;$/;"	m	struct:file::WAV	typeref:typename:std::vector<u8>
+data_chunk_id	src/file_libs/acm/wav.hpp	/^            MarkerType  data_chunk_id = "data"_str_array;                                       /;"	m	struct:file::WAV::Header	typeref:typename:MarkerType
+data_chunk_size	src/file_libs/acm/wav.hpp	/^            u16         data_chunk_size; \/\/= sample_count * channel_count * bits_per_sample \//;"	m	struct:file::WAV::Header	typeref:typename:u16
+decode_acm	src/file_libs/acm/acm.cpp	/^    WAV decode_acm( std::istream& stream )$/;"	f	namespace:file	typeref:typename:WAV
+detail	src/window.hpp	/^namespace detail$/;"	n
+endianness	src/file_libs/common/common.hpp	/^        constexpr static cfg::endian endianness = Endian;$/;"	m	struct:file::FileBase	typeref:typename:cfg::endian
+event_loop	src/window.cpp	/^bool Window::event_loop(SDL_Event& ev)$/;"	f	class:Window	typeref:typename:bool
+fRgb	src/file_libs/common/color.hpp	/^    typedef Rgb<float> fRgb;$/;"	t	namespace:file	typeref:typename:Rgb<float>
+fRgba	src/file_libs/common/color.hpp	/^    typedef Rgba<float> fRgba;$/;"	t	namespace:file	typeref:typename:Rgba<float>
+file	src/file_libs/acm/acm.cpp	/^namespace file$/;"	n	file:
+file	src/file_libs/acm/acm.hpp	/^namespace file$/;"	n
+file	src/file_libs/acm/wav.cpp	/^namespace file $/;"	n	file:
+file	src/file_libs/acm/wav.hpp	/^namespace file$/;"	n
+file	src/file_libs/common/color.hpp	/^namespace file$/;"	n
+file	src/file_libs/common/common.cpp	/^namespace file$/;"	n	file:
+file	src/file_libs/common/common.hpp	/^namespace file$/;"	n
+file	src/file_libs/common/point.hpp	/^namespace file$/;"	n
+file	src/file_libs/common/sequential_reader.hpp	/^        const FileBase<Endian>& file;$/;"	m	class:file::SequentialReader	typeref:typename:const FileBase<Endian> &
+file	src/file_libs/common/sequential_reader.hpp	/^namespace file$/;"	n
+file	src/file_libs/common/str_array.hpp	/^namespace file$/;"	n
+file	src/file_libs/frm/frame.hpp	/^namespace file$/;"	n
+file	src/file_libs/frm/frm.cpp	/^namespace file$/;"	n	file:
+file	src/file_libs/frm/frm.hpp	/^namespace file$/;"	n
+file	src/file_libs/pal/pal.cpp	/^namespace file$/;"	n	file:
+file	src/file_libs/pal/pal.hpp	/^namespace file$/;"	n
+fill	src/file_libs/acm/acm.cpp	/^    void fill(auto& packed_block)$/;"	f	namespace:file	typeref:typename:void
+fix_endian	src/file_libs/common/common.hpp	/^        auto fix_endian(const T& value) const$/;"	f	struct:file::FileBase	typeref:typename:auto
+fix_endian	src/file_libs/common/common.hpp	/^    auto fix_endian(const T& value) -> $/;"	f	namespace:file	typeref:typename:std::enable_if_t<Endian!=cfg::SYSTEM_ENDIAN,T>
+fix_endian	src/file_libs/common/common.hpp	/^    constexpr auto fix_endian(const T& value) -> $/;"	f	namespace:file	typeref:typename:std::enable_if_t<Endian==cfg::SYSTEM_ENDIAN,T>
+format	src/file_libs/acm/wav.hpp	/^            MarkerType  format = "WAVE"_str_array;                                              /;"	m	struct:file::WAV::Header	typeref:typename:MarkerType
+format_chunk_id	src/file_libs/acm/wav.hpp	/^            MarkerType  format_chunk_id = "fmt "_str_array;                                     /;"	m	struct:file::WAV::Header	typeref:typename:MarkerType
+format_chunk_size	src/file_libs/acm/wav.hpp	/^            u32         format_chunk_size = 16;$/;"	m	struct:file::WAV::Header	typeref:typename:u32
+fps	src/file_libs/frm/frm.hpp	/^        u16 fps;$/;"	m	struct:file::FRM	typeref:typename:u16
+frame_data_offset	src/file_libs/frm/frm.hpp	/^        std::array<u32, 6> frame_data_offset;$/;"	m	struct:file::FRM	typeref:typename:std::array<u32,6>
+frames	src/file_libs/frm/frm.hpp	/^        std::vector<Frame> frames;$/;"	m	struct:file::FRM	typeref:typename:std::vector<Frame>
+frames_per_direction	src/file_libs/frm/frm.hpp	/^        u16 frames_per_direction;$/;"	m	struct:file::FRM	typeref:typename:u16
+frequency	src/file_libs/acm/acm.hpp	/^        u16 frequency;$/;"	m	struct:file::ACM	typeref:typename:u16
+g	src/file_libs/common/color.hpp	/^    struct Rgb { T r, g, b; };$/;"	m	struct:file::Rgb	typeref:typename:T
+g	src/file_libs/common/color.hpp	/^    struct Rgba { T r, g, b, a; };$/;"	m	struct:file::Rgba	typeref:typename:T
+get_data	src/file_libs/acm/acm.cpp	/^    u64 get_data(u8* start, int bits_requested) const$/;"	f	struct:Offset	typeref:typename:u64	file:
+get_file_bytes	src/file_libs/common/common.cpp	/^    std::vector<std::uint8_t> get_file_bytes(const std::string& path)$/;"	f	namespace:file	typeref:typename:std::vector<std::uint8_t>
+get_file_bytes	src/file_libs/common/common.cpp	/^    std::vector<std::uint8_t> get_file_bytes(std::istream& stream)$/;"	f	namespace:file	typeref:typename:std::vector<std::uint8_t>
+get_offset	src/file_libs/common/sequential_reader.hpp	/^        std::size_t get_offset() const { return offset; }$/;"	f	class:file::SequentialReader	typeref:typename:std::size_t
+get_window	src/window.hpp	/^    SDL_Window& get_window() const { return *window; }$/;"	f	class:Window	typeref:typename:SDL_Window &
+header	src/file_libs/acm/wav.hpp	/^        } header;$/;"	m	struct:file::WAV	typeref:struct:file::WAV::Header
+height	src/file_libs/acm/acm.cpp	/^    const size_t width, height;$/;"	m	struct:Vector2D	typeref:typename:const size_t	file:
+height	src/file_libs/frm/frame.hpp	/^        u16 height;$/;"	m	struct:file::Frame	typeref:typename:u16
+iRgb	src/file_libs/common/color.hpp	/^    typedef Rgb<int> iRgb;$/;"	t	namespace:file	typeref:typename:Rgb<int>
+iRgba	src/file_libs/common/color.hpp	/^    typedef Rgba<int> iRgba;$/;"	t	namespace:file	typeref:typename:Rgba<int>
+indexable	src/file_libs/common/sequential_reader.hpp	/^        const Indexable& indexable;$/;"	m	class:file::SequentialReader	typeref:typename:const Indexable &
+loop	src/window.cpp	/^void Window::loop()$/;"	f	class:Window	typeref:typename:void
+main	src/file_libs/common/tests/endian_test.cpp	/^int main(int, char**)$/;"	f	typeref:typename:int
+main	src/file_libs/common/tests/str_array_test.cpp	/^int main($/;"	f	typeref:typename:int
+main	src/main.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
+offset	src/file_libs/common/sequential_reader.hpp	/^        std::size_t offset = 0;$/;"	m	class:file::SequentialReader	typeref:typename:std::size_t
+open	src/file_libs/acm/acm.cpp	/^    ACM ACM::open(const std::string& path)$/;"	f	class:file::ACM	typeref:typename:ACM
+open	src/file_libs/frm/frm.cpp	/^    FRM FRM::open(const std::string& path)$/;"	f	class:file::FRM	typeref:typename:FRM
+open	src/file_libs/pal/pal.cpp	/^    PAL PAL::open(const std::string& path)$/;"	f	class:file::PAL	typeref:typename:PAL
+operator ()	src/file_libs/acm/acm.cpp	/^    T& operator()(size_t x, size_t y)$/;"	f	struct:Vector2D	typeref:typename:T &	file:
+operator ()	src/window.cpp	/^void detail::SDLDeleter::operator()(SDL_Window *ptr) { SDL_DestroyWindow(ptr); }$/;"	f	class:detail::SDLDeleter	typeref:typename:void
+operator +=	src/file_libs/acm/acm.cpp	/^    Offset& operator+=(const size_t& s) {$/;"	f	struct:Offset	typeref:typename:Offset &	file:
+opposite_endian	src/file_libs/common/tests/endian_test.cpp	/^constexpr auto opposite_endian = $/;"	v	typeref:typename:auto
+palette	src/file_libs/frm/frm.hpp	/^        std::optional<PAL> palette = std::nullopt;$/;"	m	struct:file::FRM	typeref:typename:std::optional<PAL>
+pixel_shift	src/file_libs/frm/frame.hpp	/^        Point<u16> pixel_shift;$/;"	m	struct:file::Frame	typeref:typename:Point<u16>
+pixel_shift	src/file_libs/frm/frm.hpp	/^        std::array<Point<u16>, 6> pixel_shift;$/;"	m	struct:file::FRM	typeref:typename:std::array<Point<u16>,6>
+r	src/file_libs/common/color.hpp	/^    struct Rgb { T r, g, b; };$/;"	m	struct:file::Rgb	typeref:typename:T
+r	src/file_libs/common/color.hpp	/^    struct Rgba { T r, g, b, a; };$/;"	m	struct:file::Rgba	typeref:typename:T
+read	src/file_libs/common/sequential_reader.hpp	/^        T read()$/;"	f	class:file::SequentialReader	typeref:typename:T
+read_data	src/file_libs/acm/acm.cpp	/^    auto read_data(u8* start, int bits_requested)$/;"	f	struct:Offset	typeref:typename:auto	file:
+read_into	src/file_libs/common/sequential_reader.hpp	/^        void read_into(T& value)$/;"	f	class:file::SequentialReader	typeref:typename:void
+remainder	src/file_libs/acm/acm.cpp	/^    u8 remainder() const { return bits % 8; }$/;"	f	struct:Offset	typeref:typename:u8	file:
+rgb_conversion_table	src/file_libs/pal/pal.hpp	/^        std::array<std::uint8_t, 32767> rgb_conversion_table;$/;"	m	struct:file::PAL	typeref:typename:std::array<std::uint8_t,32767>
+s16Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::int16_t> s16Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::int16_t>
+s32Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::int32_t> s32Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::int32_t>
+s8Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::int8_t> s8Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::int8_t>
+sample_count	src/file_libs/acm/acm.hpp	/^        u32 sample_count;$/;"	m	struct:file::ACM	typeref:typename:u32
+sample_rate	src/file_libs/acm/wav.hpp	/^            u32         sample_rate; \/\/usually 22050 for acm                                  /;"	m	struct:file::WAV::Header	typeref:typename:u32
+set_gl_attributes	src/window.cpp	/^void set_gl_attributes()$/;"	f	typeref:typename:void
+set_offset	src/file_libs/common/sequential_reader.hpp	/^        void set_offset(std::size_t new_offset) { offset = new_offset; }$/;"	f	class:file::SequentialReader	typeref:typename:void
+signature	src/file_libs/acm/acm.hpp	/^        std::array<u8, 4> signature;$/;"	m	struct:file::ACM	typeref:typename:std::array<u8,4>
+size	src/file_libs/common/str_array.hpp	/^            constexpr auto size() const { return N-1; }$/;"	f	struct:file::str_array::CharArray	typeref:typename:auto
+size	src/file_libs/frm/frame.hpp	/^        u32 size;$/;"	m	struct:file::Frame	typeref:typename:u32
+str_array	src/file_libs/common/str_array.hpp	/^    namespace str_array$/;"	n	namespace:file
+super	src/file_libs/acm/acm.cpp	/^    typedef std::vector<T> super;$/;"	t	struct:Vector2D	typeref:typename:std::vector<T>	file:
+transparent_color	src/file_libs/pal/pal.hpp	/^        auto transparent_color() const { return colors[0]; }$/;"	f	struct:file::PAL	typeref:typename:auto
+u16Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::uint16_t> u16Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::uint16_t>
+u16Rgba	src/file_libs/common/color.hpp	/^    typedef Rgba<std::uint16_t> u16Rgba;$/;"	t	namespace:file	typeref:typename:Rgba<std::uint16_t>
+u32Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::uint32_t> u32Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::uint32_t>
+u32Rgba	src/file_libs/common/color.hpp	/^    typedef Rgba<std::uint32_t> u32Rgba;$/;"	t	namespace:file	typeref:typename:Rgba<std::uint32_t>
+u8Rgb	src/file_libs/common/color.hpp	/^    typedef Rgb<std::uint8_t> u8Rgb;$/;"	t	namespace:file	typeref:typename:Rgb<std::uint8_t>
+u8Rgba	src/file_libs/common/color.hpp	/^    typedef Rgba<std::uint8_t> u8Rgba;$/;"	t	namespace:file	typeref:typename:Rgba<std::uint8_t>
+unused_indices	src/file_libs/pal/pal.hpp	/^        std::unordered_set<std::size_t> unused_indices;$/;"	m	struct:file::PAL	typeref:typename:std::unordered_set<std::size_t>
+v	src/window.cpp	/^    struct GLAttributes { SDL_GLattr a; int v; };$/;"	m	struct:set_gl_attributes::GLAttributes	typeref:typename:int	file:
+value	src/file_libs/common/tests/endian_test.cpp	/^    int16_t value;$/;"	m	struct:Test	typeref:typename:int16_t	file:
+version	src/file_libs/frm/frm.hpp	/^        u32 version;$/;"	m	struct:file::FRM	typeref:typename:u32
+width	src/file_libs/acm/acm.cpp	/^    const size_t width, height;$/;"	m	struct:Vector2D	typeref:typename:const size_t	file:
+width	src/file_libs/frm/frame.hpp	/^        u16 width;$/;"	m	struct:file::Frame	typeref:typename:u16
+window	src/window.hpp	/^    SDLPtr<SDL_Window> window;$/;"	m	class:Window	typeref:typename:SDLPtr<SDL_Window>
+x	src/file_libs/common/point.hpp	/^    struct Point { T x, y; };$/;"	m	struct:file::Point	typeref:typename:T
+y	src/file_libs/common/point.hpp	/^    struct Point { T x, y; };$/;"	m	struct:file::Point	typeref:typename:T
+~Renderer	src/renderer.cpp	/^Renderer::~Renderer()$/;"	f	class:Renderer
+~Window	src/window.cpp	/^Window::~Window()$/;"	f	class:Window

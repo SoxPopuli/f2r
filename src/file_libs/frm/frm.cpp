@@ -1,29 +1,29 @@
 #include "frm.hpp"
 #include "frame.hpp"
 #include "common/sequential_reader.hpp"
+#include "common/common.hpp"
 
 #include <cstdio>
 
-namespace file
+namespace file::frm
 {
 
-    FRM FRM::open(const std::string& path)
+    Frm::Frm(std::istream& stream)
     {
-        FRM f;
-        auto bytes = get_file_bytes(path);
-        auto r = SequentialReader(bytes, f);
+        auto bytes = get_file_bytes(stream);
+        auto r = make_sequential_reader<Frm::endianness>(bytes);
 
-        r.read_into(f.version);
-        r.read_into(f.fps);
-        r.read_into(f.action_frame);
-        r.read_into(f.frames_per_direction);
+        r.read_into(version);
+        r.read_into(fps);
+        r.read_into(action_frame);
+        r.read_into(frames_per_direction);
 
-        for(std::size_t i = 0; i < f.pixel_shift.size(); i++)
-            f.pixel_shift[i].x = r.read<u16>();
-        for(std::size_t i = 0; i < f.pixel_shift.size(); i++)
-            f.pixel_shift[i].y = r.read<u16>();
-        for(std::size_t i = 0; i < f.frame_data_offset.size(); i++)
-            f.frame_data_offset[i] = r.read<u32>();
+        for(std::size_t i = 0; i < pixel_shift.size(); i++)
+            pixel_shift[i].x = r.read<u16>();
+        for(std::size_t i = 0; i < pixel_shift.size(); i++)
+            pixel_shift[i].y = r.read<u16>();
+        for(std::size_t i = 0; i < frame_data_offset.size(); i++)
+            frame_data_offset[i] = r.read<u32>();
 
         [[maybe_unused]] auto size = r.read<u32>();
 
@@ -41,10 +41,8 @@ namespace file
             for(auto& index : frame.color_indices)
                 r.read_into(index);
 
-            f.frames.push_back(frame);
+            frames.push_back(frame);
         }
-
-        return f;
     }
 
 }

@@ -1,17 +1,18 @@
 #include "pal.hpp"
 #include <cstring>
+#include <istream>
 
-namespace file
+namespace file::pal
 {
 
-    PAL PAL::open(const std::string& path)
+    Pal::Pal(std::istream& input)
     {
-        auto bytes = get_file_bytes(path);
-        PAL pal;
+        auto bytes = get_file_bytes(input);
 
+        constexpr std::uint8_t color_mult = 4;
+        constexpr auto limit = (63 * color_mult);
         const auto get_color = [&bytes](auto index)
         {
-            constexpr std::uint8_t color_mult = 4;
             auto r = bytes[ (index*3) + 0 ] * color_mult;
             auto g = bytes[ (index*3) + 1 ] * color_mult;
             auto b = bytes[ (index*3) + 2 ] * color_mult;
@@ -21,19 +22,18 @@ namespace file
                 .b = static_cast<std::uint8_t>(b),
             };
         };
-        const auto check_color = [&pal](u8Rgb& rgb, auto index)
+        const auto check_color = [&](u8Rgb& rgb, auto index)
         {
-            constexpr auto limit = (63 * 4);
             if(rgb.r > limit || rgb.g > limit || rgb.b > limit)
             {
                 rgb = {0, 0, 0};
-                pal.unused_indices.insert(index);
+                unused_indices.insert(index);
             }
         };
         
         for(std::size_t i = 0; i < 256; i++)
         {
-            auto& col = pal.colors[i];
+            auto& col = colors[i];
             col = get_color(i);
             
             check_color(col, i);
@@ -46,10 +46,8 @@ namespace file
                   //elem++)
         for(auto e = 0x300; e < 0x82FF; e++)
         {
-            pal.rgb_conversion_table[index++] = bytes[e];
+            rgb_conversion_table[index++] = bytes[e];
         }
-
-        return pal;
     }
 
 }

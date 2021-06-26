@@ -35,7 +35,10 @@ else
   error('System endian unknown')
 endif
 
-config_inc = include_directories('.')
+config_inc = [ 
+  include_directories('.'), 
+  include_directories('src/include') 
+]
 configure_file(
   configuration: config_data, 
   input: 'config.hpp.in',
@@ -43,18 +46,34 @@ configure_file(
 # build file libraries
 subdir('src/file_libs')
 
+libacm_cpp = dependency('', fallback: ['libacm', 'libacm_cpp'])
+
 if get_option('build_tools')
   cxxopts = dependency('cxxopts', required: true)
   subdir('tools')
 endif
 
-inc = include_directories('src')
+if get_option('build_tests')
+  subdir('tests')
+endif
+
+inc = include_directories('src/include')
 srcs = files(
   'src/main.cpp',
   'src/window.cpp'
 )
+
+exe_deps = [
+  fmt, 
+  spdlog,
+  glbinding,
+  sdl2,
+  file_deps,
+  libacm_cpp,
+]
+
 executable('f2r',
            srcs,
            include_directories: [ config_inc, inc ],
-           dependencies: [ fmt, spdlog, glbinding, sdl2, file_deps ],
+           dependencies: exe_deps,
            install : true)

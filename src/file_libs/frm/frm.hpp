@@ -8,12 +8,13 @@
 #include <array>
 #include <vector>
 #include <optional>
+#include <istream>
 
-namespace file
+namespace file::frm
 {
-    struct FRM: public FileBase<cfg::endian::big>
+    struct Frm: public FileBase<cfg::endian::big>
     {
-        std::optional<PAL> palette = std::nullopt;
+        std::optional<pal::Pal> palette = std::nullopt;
 
         u32 version;
         u16 fps;
@@ -25,7 +26,10 @@ namespace file
 
         std::vector<Frame> frames;
 
-        static FRM open(const std::string& path);
+        Frm() = default;
+        ~Frm() = default;
+
+        Frm(std::istream& stream);
     };
 
 }

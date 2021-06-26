@@ -3,6 +3,7 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <cxxopts.hpp>
+#include <fstream>
 
 int main(int argc, char* argv[])
 {
@@ -20,7 +21,8 @@ int main(int argc, char* argv[])
         return 2;
     }
 
-    auto frm = file::FRM::open( result["file"].as<std::string>() );
+    auto frm_stream = std::ifstream( result["file"].as<std::string>() );
+    auto frm = file::frm::Frm( frm_stream );
     fmt::print("version:        {}\n", frm.version);
     fmt::print("fps:            {}\n", frm.fps);
     fmt::print("action_frame:   {}\n", frm.action_frame);
