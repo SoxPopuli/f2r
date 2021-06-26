@@ -3,3 +3,5 @@ build/
 .obsidian/
 data/
 compile_commands.json
+.gdb_history
+tags
