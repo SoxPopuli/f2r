@@ -1,6 +1,8 @@
 mve_inc = include_directories('.')
 mve_srcs = files(
   'mve.cpp',
+  'chunk.cpp',
+  'opcode.cpp',
 )
 
 mve_lib = library('mve',

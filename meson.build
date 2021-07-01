@@ -27,6 +27,24 @@ endif
 
 mp3lame = dependency('libmp3lame', required: false, disabler: true)
 
+imgui_inc = include_directories('subprojects/imgui', 'subprojects/imgui/backends')
+imgui = library('imgui',
+  files(
+    #'./subprojects/imgui/backends/imgui_impl_opengl3.cpp',
+    './subprojects/imgui/backends/imgui_impl_sdl.cpp',
+    './subprojects/imgui/imgui.cpp',
+    './subprojects/imgui/imgui_demo.cpp',
+    './subprojects/imgui/imgui_draw.cpp',
+    './subprojects/imgui/imgui_tables.cpp',
+    './subprojects/imgui/imgui_widgets.cpp',
+  ),
+  include_directories: imgui_inc,
+  dependencies: [ sdl2, glbinding ]
+)
+
+
+
+
 config_data = configuration_data()
 host_endian = host_machine.endian()
 if host_endian == 'little' or host_endian == 'big'

@@ -42,4 +42,63 @@ namespace file::mve
         u32 rate;
         u16 subdivision;
     };
+
+    struct InitAudioOpcode: public Opcode
+    {
+        u16 unknown;
+
+        struct Flags
+        {
+            bool channels: 1; // 0: mono, 1: stereo
+            bool bit_width: 1; // 0: 8bit, 1: 16bit
+            bool compressed: 1; // 0: uncompressed, 1: compressed
+
+            int padding: 16 - 3;
+        } flags;
+
+        u16 sample_rate;
+        u32 min_buffer_length;
+    };
+
+    struct InitVideoBuffersOpcode: public Opcode
+    {
+        u16 width;
+        u16 height;
+        u16 count;
+        u16 true_color;
+
+    };
+
+    struct DisplayOpcode: public Opcode
+    {
+        u16 palette_start;
+        u16 palette_count;
+        u16 unknown;
+    };
+
+    struct SilentAudioFrameOpcode: public Opcode
+    {
+        u16 seq_index;
+        u16 stream_mask;
+        u16 stream_len;
+    };
+
+    struct AudioFrameOpcode: public Opcode
+    {
+        u16 seq_index;
+        u16 stream_mask;
+        u16 stream_len;
+
+        std::vector<u8> data;
+    };
+
+    struct InitVideoOpcode: public Opcode
+    {
+        u16 xres, yres;
+        u16 flags;
+    };
+
+
+
+
 }

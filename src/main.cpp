@@ -4,6 +4,7 @@
 
 int main(int argc, char* argv[])
 {
+
     Window{}.loop();
 
     return EXIT_SUCCESS;
