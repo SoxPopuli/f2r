@@ -4,7 +4,8 @@
 
 int main(int argc, char* argv[])
 {
-    Window{}.loop();
+    auto w = Window{};
+    w.loop();
 
     return EXIT_SUCCESS;
 }

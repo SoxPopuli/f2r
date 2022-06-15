@@ -1,5 +1,5 @@
-#include "frm/frm.hpp"
-#include "pal/pal.hpp"
+#include "files/frm.hpp"
+#include "files/pal.hpp"
 
 #include <cxxopts.hpp>
 #include <iostream>

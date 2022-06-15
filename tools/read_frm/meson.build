@@ -3,6 +3,6 @@ read_frm_srcs = files(
 )
 read_frm = executable('read_frm',
   read_frm_srcs,
-  dependencies: [ frm, fmt, cxxopts ],
+  dependencies: [ core, fmt, cxxopts ],
   install: true
 )

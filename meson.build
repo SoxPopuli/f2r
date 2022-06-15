@@ -6,6 +6,8 @@ project('f2r', 'cpp',
     'pkg_config_path=@0@'.format( meson.current_build_dir() )
   ])
 
+pch = '@0@/pch.hpp'.format( meson.current_source_dir() )
+
 cmake = import('cmake')
 cmake_opt = cmake.subproject_options()
 
@@ -13,17 +15,9 @@ glbinding = dependency('glbinding', required: true)
 fmt = dependency('fmt', required: true)
 spdlog = dependency('spdlog', required: true)
 
-sdl2 = dependency('sdl2', required: false)
-if sdl2.found() == false
-  sdl2_proj = cmake.subproject('SDL')
-  sdl2 = [ sdl2_proj.dependency('SDL2'), sdl2_proj.dependency('SDL2main') ]
-endif
+sdl2 = dependency('sdl2', required: true)
 
-portaudio = dependency('portaudio', required: false)
-if portaudio.found() == false
-  portaudio_proj = cmake.subproject('portaudio')
-  portaudio = portaudio_proj.dependency('portaudio')
-endif
+portaudio = dependency('portaudio-2.0', required: true)
 
 mp3lame = dependency('libmp3lame', required: false, disabler: true)
 
@@ -37,16 +31,36 @@ endif
 
 config_inc = [ 
   include_directories('.'), 
-  include_directories('src/include') 
+  include_directories('include') 
 ]
 configure_file(
   configuration: config_data, 
   input: 'config.hpp.in',
   output: 'config.hpp')
 # build file libraries
-subdir('src/file_libs')
 
-libacm_cpp = dependency('', fallback: ['libacm', 'libacm_cpp'])
+inc = include_directories('include')
+subdir('src')
+
+deps = [
+  fmt, 
+  spdlog,
+  glbinding,
+  sdl2,
+]
+
+core_lib = static_library('core',
+  srcs,
+  include_directories: [ config_inc, inc ],
+  dependencies: deps,
+  cpp_pch: pch,
+)
+
+core = declare_dependency(
+  include_directories: [config_inc, inc],
+  dependencies: deps,
+  link_with: core_lib,
+)
 
 if get_option('build_tools')
   cxxopts = dependency('cxxopts', required: true)
@@ -57,23 +71,9 @@ if get_option('build_tests')
   subdir('tests')
 endif
 
-inc = include_directories('src/include')
-srcs = files(
-  'src/main.cpp',
-  'src/window.cpp'
-)
-
-exe_deps = [
-  fmt, 
-  spdlog,
-  glbinding,
-  sdl2,
-  file_deps,
-  libacm_cpp,
-]
-
 executable('f2r',
-           srcs,
+           files('src/main.cpp'),
            include_directories: [ config_inc, inc ],
-           dependencies: exe_deps,
+           dependencies: core,
+           cpp_pch: pch,
            install : true)

@@ -10,6 +10,9 @@
 #include <array>
 #include <utility>
 
+#define print_gl_string(str, name) \
+    spdlog::info(str, glGetString(name))
+
 using namespace gl;
 
 void detail::SDLDeleter::operator()(SDL_Window *ptr) { SDL_DestroyWindow(ptr); }
@@ -58,11 +61,6 @@ Window::Window()
         return reinterpret_cast<glbinding::ProcAddress>(addr);
     });
     gl::glClearColor(0.8f, 0.0f, 0.8f, 1.0f);
-
-
-    auto print_gl_string = [](auto str, auto name) {
-        spdlog::info(str, glGetString(name));
-    };
 
     print_gl_string("Vendor: {}", GL_VENDOR);
     print_gl_string("Renderer: {}", GL_RENDERER);
