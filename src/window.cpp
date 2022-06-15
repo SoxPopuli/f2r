@@ -62,11 +62,6 @@ Window::Window()
     });
     gl::glClearColor(0.8f, 0.0f, 0.8f, 1.0f);
 
-
-    constexpr auto print_gl_string = [](auto str, auto name) {
-        spdlog::info(str, glGetString(name));
-    };
-
     print_gl_string("Vendor: {}", GL_VENDOR);
     print_gl_string("Renderer: {}", GL_RENDERER);
     print_gl_string("GL Version: {}", GL_VERSION);

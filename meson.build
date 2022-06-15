@@ -39,11 +39,6 @@ configure_file(
   output: 'config.hpp')
 # build file libraries
 
-if get_option('build_tools')
-  cxxopts = dependency('cxxopts', required: true)
-  subdir('tools')
-endif
-
 inc = include_directories('include')
 subdir('src')
 
@@ -66,6 +61,11 @@ core = declare_dependency(
   dependencies: deps,
   link_with: core_lib,
 )
+
+if get_option('build_tools')
+  cxxopts = dependency('cxxopts', required: true)
+  subdir('tools')
+endif
 
 if get_option('build_tests')
   subdir('tests')

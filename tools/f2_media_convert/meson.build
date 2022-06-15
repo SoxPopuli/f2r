@@ -4,6 +4,6 @@ f2_media_convert_srcs = files(
 
 f2_media_convert = executable('f2_media_convert',
   f2_media_convert_srcs,
-  dependencies: [ libacm_cpp, acm, mp3lame, cxxopts, fmt, portaudio ],
+  dependencies: [ cxxopts, fmt, core ],
   install: true
 )

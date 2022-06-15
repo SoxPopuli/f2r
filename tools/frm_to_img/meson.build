@@ -7,6 +7,6 @@ frm_to_img_srcs = files(
 )
 frm_to_img = executable('frm_to_img',
   frm_to_img_srcs,
-  dependencies: [ frm, cxxopts ],
+  dependencies: [ core, cxxopts ],
   install: true
 )
